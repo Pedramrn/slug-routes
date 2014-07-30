@@ -19,6 +19,11 @@ class SlugRouter extends Router
             if($forceId === false && $model instanceof SluggableInterface)
             {
                 $model = $model->where($model->getSlugIdentifier(), $value)->first();
+                if (is_null($model))
+                {
+                    $model = new $class;
+                    $model = $model->find($value);
+                }
             }
             else
             {
