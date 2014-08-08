@@ -20,7 +20,7 @@ class SlugRoutesServiceProvider extends ServiceProvider {
 	{
 		$this->app['router'] = $this->app->share(function($app)
 		{
-			$router = new SlugRouter($app);
+			$router = new SlugRouter($app['events'], $app);
 
 			// If the current application environment is "testing", we will disable the
 			// routing filters, since they can be tested independently of the routes
